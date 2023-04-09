@@ -8,18 +8,18 @@ import { HeroService } from '../hero.service';
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-export class HeroesComponent implements OnInit{
+export class HeroesComponent implements OnInit {
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
     this.getHeroes();
   }
 
-  heroes : Hero[] = [];
+  heroes: Hero[] = [];
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
   }
 
   hero: Hero = {
